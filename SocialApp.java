@@ -9,22 +9,25 @@ public class SocialApp {
 
     public SocialApp() {}
 
+//=============================================================================================================================//
     public void start() {
-        this.socialGraph = null;
-        this.socialGraphLoader = new SocialGraphLoader();
+        this.socialGraph = null;                                // Our main social graph ready for values
+        this.socialGraphLoader = new SocialGraphLoader();       // Backend handler for handling file path loading
 
         while (socialGraph == null) {
-            socialGraph = socialGraphLoader.inputFilePath();
+            socialGraph = socialGraphLoader.inputFilePath();    // Loads the social graph from the file input
             if (socialGraph == null) System.out.println("Failed to load graph. Please try again.\n");
         }
 
         System.out.println("Graph loaded successfully!");
 
-        while (end==false && socialGraph != null) {
-            displayMenu();
-            end = menuController();
+        while (end==false && socialGraph != null) {             // MAIN MENU
+            displayMenu();                                      // Print Choices
+            end = menuController();                             // menuController handles user input
         }
     }
+
+//=============================================================================================================================//
 
     private void displayMenu() {
         System.out.printf("\nMAIN MENU\n");
