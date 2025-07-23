@@ -1,5 +1,10 @@
 import java.util.*;
 
+    /* EXPLANATION:
+        * 1. This is simply a SocialGraph model class with getters and setters and a verification method with userExists
+        *     and the getFriendsOf() method.
+    */
+
 public class SocialGraph {
 
     private int numUsers;

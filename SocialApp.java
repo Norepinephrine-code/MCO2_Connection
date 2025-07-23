@@ -10,6 +10,11 @@ public class SocialApp {
     public SocialApp() {}
 
 //=============================================================================================================================//
+    /* EXPLANATION:
+        * 1. This is the high level starting point of the program
+        * 2. This simply loops the entire program until end is true
+     */    
+
     public void start() {
         this.socialGraph = null;                                // Our main social graph ready for values
         this.socialGraphLoader = new SocialGraphLoader();       // Backend handler for handling file path loading
@@ -30,6 +35,9 @@ public class SocialApp {
 //=============================================================================================================================//
 
     private void displayMenu() {
+    /* EXPLANATION:
+        * 1. This simply displays the menu
+    */  
         System.out.printf("\nMAIN MENU\n");
         System.out.println("[1] Get friend list");
         System.out.println("[2] Get connection");
@@ -38,6 +46,11 @@ public class SocialApp {
     }
 
     private boolean menuController() {
+    /* EXPLANATION:
+        * 1. This is the high level controller when the user inputs a choice
+        * 2. All methods will return false unless case 3 to end the program.
+    */  
+
         System.out.print("Enter your choice: ");
         int choice = Integer.parseInt(scanner.nextLine());
 
@@ -52,6 +65,11 @@ public class SocialApp {
     }
 
     public boolean friendListController() {
+    /* EXPLANATION:
+        * 1. This is the controlelr responsible for calling the getFriendOf() method of the SocialGraph object
+        * 2. It verifies first if the user exists.
+    */ 
+
         System.out.print("Enter ID of person: ");
         int userId =  Integer.parseInt(scanner.nextLine());
         if (!socialGraph.userExists(userId)) {
@@ -66,6 +84,11 @@ public class SocialApp {
     }
     
     public boolean pathConnectionController() {
+    /* EXPLANATION:
+        * 1. This is the controller responsible for the algorithm in searching the path connection between personA and personB
+        * 2. It verifies if the persons do exist.
+        * 3. If it does exist it calls the algorithm that will parse the path from personA to personB
+    */ 
 
         System.out.print("Enter ID of first person: ");
         int startId =  Integer.parseInt(scanner.nextLine());
@@ -152,8 +175,8 @@ public class SocialApp {
 
                 int friendId = connections.get(i);
 
-                if (!visited.contains(friendId)) {        // If it doesnt exist in the nodes we already visited
-                    visited.add(friendId);                // then add it, and create a new List<Integer> path to the queue
+                if (!visited.contains(friendId)) {                         // If it doesnt exist in the nodes we already visited
+                    visited.add(friendId);                                 // then add it, and create a new List<Integer> path to the queue
                     
                     List<Integer> newPath = new ArrayList<>(currentPath);  // Copy the original path, MAKE SURE TO DEEP COPY and not just reference
                     newPath.add(friendId);                                 // Add the connection
